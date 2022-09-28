@@ -1,0 +1,15 @@
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\bin\Debug\net6.0\BatalhaNaval.exe
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\bin\Debug\net6.0\BatalhaNaval.deps.json
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\bin\Debug\net6.0\BatalhaNaval.runtimeconfig.json
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\bin\Debug\net6.0\BatalhaNaval.dll
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\bin\Debug\net6.0\BatalhaNaval.pdb
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\obj\Debug\net6.0\BatalhaNaval.csproj.AssemblyReference.cache
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\obj\Debug\net6.0\BatalhaNaval.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\obj\Debug\net6.0\BatalhaNaval.AssemblyInfoInputs.cache
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\obj\Debug\net6.0\BatalhaNaval.AssemblyInfo.cs
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\obj\Debug\net6.0\BatalhaNaval.csproj.CoreCompileInputs.cache
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\obj\Debug\net6.0\BatalhaNaval.dll
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\obj\Debug\net6.0\refint\BatalhaNaval.dll
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\obj\Debug\net6.0\BatalhaNaval.pdb
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\obj\Debug\net6.0\BatalhaNaval.genruntimeconfig.cache
+C:\Users\eduma\OneDrive\Documentos\_Estudos\Uniplac\Semestre 2\POO\09-27-2022\BatalhaNaval\obj\Debug\net6.0\ref\BatalhaNaval.dll
