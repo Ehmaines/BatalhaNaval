@@ -7,10 +7,17 @@
         int jogadas = 15; // 
         int player; //jogador
         int[] lastplayerPoints;  // antigos pontos do jogador
-        int[] Cruiser = new int[1];  // cruzador
+        string[] Cruiser = new string[1];  // cruzador
         string[] AircraftCarrier = new string[10]; // porta aviao 
-        int[] TugBoats = new int[2]; // rebocador
-        
+        string[] TugBoats = new string[2]; // rebocador
+
+        int contador=0;
+        foreach(var item in Cruiser)
+        {
+            SetCruzador(quadroBatalha,Cruiser,contador);
+            contador++;
+        }
+        contador=0;
         // Console.WriteLine(int.IsPunctuation(playerPoints));
         // Console.WriteLine(int.IsPunctuation(lastplayerPoints)); //sistema de pontuacao nao concluido
 
@@ -148,7 +155,7 @@
         return random.Next(max);
     }
 
-    public (int, int) GetPosicaoLivre(string[,] quadroBatalha)
+    public (string, string) GetPosicaoLivre(string[,] quadroBatalha)
     {
         int i = -1;
         int j = -1;
@@ -159,13 +166,13 @@
             j = GetRandomPosition(10);
         } while (quadroBatalha[i, j] != " ");
 
-        return (i, j);
+        return (Convert.ToString(i), Convert.ToString(j));
     }
 
-    public void SetCruzador(ref string[,] quadroBatalha)//Seta onde vai ficar posicionado o Cruzador
+    public void SetCruzador(string[,] quadroBatalha,string[] Cruiser,int contador)//Seta onde vai ficar posicionado o Cruzador
     {
-        (int, int) tupla = GetPosicaoLivre(quadroBatalha);
-        quadroBatalha[tupla.Item1, tupla.Item2] = "c";
+        (string, string) tupla = GetPosicaoLivre(quadroBatalha);
+        Cruiser[contador] = $"{tupla.Item1} {tupla.Item2}";
     }
 
     public void SetPortaAviao(ref string[,] quadroBatalha)//Seta onde vai ficar posicionado o porta aviões
