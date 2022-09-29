@@ -65,26 +65,34 @@
 
   public string VerificaPosicãoBarcoMaisPerto(string[,] quadroBatalha, int linha, int coluna)
   {
-    string numero;
+    string retorno;
+
+    if (linha > 2 && linha < 7 && coluna > 2 && coluna < 7)
+    {
+      return VerificaTresPosicoes(quadroBatalha, linha, coluna);
+    }
+
+    if(coluna == 2 && linha> 2 && linha<7)
+    {
+
+    }
+
+  }
+#region 
+  public static string VerficaParaColuna2(string[,] quadroBatalha, int linha, int coluna)
+  { 
     //Verificação para saber se está 1 quadrado em volta
-    if (quadroBatalha[linha - 1, coluna] == "p" || quadroBatalha[linha - 1, coluna] == "c" || quadroBatalha[linha - 1, coluna] == "r" ||
-       quadroBatalha[linha + 1, coluna] == "p" || quadroBatalha[linha + 1, coluna] == "c" || quadroBatalha[linha + 1, coluna] == "r" ||
-       quadroBatalha[linha, coluna - 1] == "p" || quadroBatalha[linha, coluna - 1] == "c" || quadroBatalha[linha, coluna - 1] == "r" ||
-       quadroBatalha[linha, coluna + 1] == "p" || quadroBatalha[linha, coluna + 1] == "c" || quadroBatalha[linha, coluna + 1] == "r")
+    if (quadroBatalha[linha - 1, coluna] != " " || quadroBatalha[linha + 1, coluna] != " " ||
+       quadroBatalha[linha, coluna - 1] != " " || quadroBatalha[linha, coluna + 1] != " ")
     {
       return "1";
     }//Verificação para saber se está 2 quadrado em volta
-    else if (quadroBatalha[linha - 2, coluna] == "p" || quadroBatalha[linha - 2, coluna] == "c" || quadroBatalha[linha - 2, coluna] == "r" ||
-            quadroBatalha[linha + 2, coluna] == "p" || quadroBatalha[linha + 2, coluna] == "c" || quadroBatalha[linha + 2, coluna] == "r" ||
-            quadroBatalha[linha, coluna - 2] == "p" || quadroBatalha[linha, coluna - 2] == "c" || quadroBatalha[linha, coluna - 2] == "r" ||
-            quadroBatalha[linha, coluna + 2] == "p" || quadroBatalha[linha, coluna + 2] == "c" || quadroBatalha[linha, coluna + 2] == "r")
+    else if (quadroBatalha[linha - 2, coluna] == " " || quadroBatalha[linha + 2, coluna] == " " ||
+            quadroBatalha[linha, coluna - 2] == " " || quadroBatalha[linha, coluna + 2] == " ")
     {
       return "2";
     }//Verificação para saber se está 3 quadrado em volta
-    else if (quadroBatalha[linha - 3, coluna] == "p" || quadroBatalha[linha - 3, coluna] == "c" || quadroBatalha[linha - 3, coluna] == "r" ||
-            quadroBatalha[linha + 3, coluna] == "p" || quadroBatalha[linha + 3, coluna] == "c" || quadroBatalha[linha + 3, coluna] == "r" ||
-            quadroBatalha[linha, coluna - 3] == "p" || quadroBatalha[linha, coluna - 3] == "c" || quadroBatalha[linha, coluna - 3] == "r" ||
-            quadroBatalha[linha, coluna + 3] == "p" || quadroBatalha[linha, coluna + 3] == "c" || quadroBatalha[linha, coluna + 3] == "r")
+    else if (quadroBatalha[linha + 3, coluna] == " " || quadroBatalha[linha, coluna - 3] == " " || quadroBatalha[linha, coluna + 3] == " ")
     {
       return "3";
     }
@@ -95,6 +103,31 @@
     }
   }
 
+  public static string VerificaTresPosicoes(string[,] quadroBatalha, int linha, int coluna)
+  {
+    //Verificação para saber se está 1 quadrado em volta
+    if (quadroBatalha[linha - 1, coluna] != " " || quadroBatalha[linha + 1, coluna] != " " ||
+       quadroBatalha[linha, coluna - 1] != " " || quadroBatalha[linha, coluna + 1] != " ")
+    {
+      return "1";
+    }//Verificação para saber se está 2 quadrado em volta
+    else if (quadroBatalha[linha - 2, coluna] == " " || quadroBatalha[linha + 2, coluna] == " " ||
+            quadroBatalha[linha, coluna - 2] == " " || quadroBatalha[linha, coluna + 2] == " ")
+    {
+      return "2";
+    }//Verificação para saber se está 3 quadrado em volta
+    else if (quadroBatalha[linha - 3, coluna] == " " || quadroBatalha[linha + 3, coluna] == " " ||
+            quadroBatalha[linha, coluna - 3] == " " || quadroBatalha[linha, coluna + 3] == " ")
+    {
+      return "3";
+    }
+    else
+    {
+      return "M";
+      // Console.WriteLine("Errou por muito!");
+    }
+  }
+#endregion
   public void Menu(string[,] quadroBatalha, int jogadas)
   {
     //menu Do Jogo
