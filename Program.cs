@@ -56,9 +56,6 @@
         {
             return "comando dado antes";
         }
-
-        return "comando dado antes";
-
     }
 
     public static string VerificaPosicaoBarcoMaisPerto(string[,] quadroBatalha, int linha, int coluna)
@@ -102,18 +99,14 @@
 
     public bool VerificaSeENumero(string input){
         var verificar = input.Split(" ");
-        var sucesso = false;
         for (int i = 0; i < verificar.Length; i++)
         {
-            if(int.TryParse(verificar[i], out var a)){
-                sucesso = true;
-            }
-            else
+            if(!int.TryParse(verificar[i], out var a))
             {
                 return false;
             }
         }
-        return sucesso;
+        return true;
     }
 
     #endregion
