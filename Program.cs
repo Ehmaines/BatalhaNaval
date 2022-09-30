@@ -3,132 +3,106 @@
   public Program()
   {
     string[,] quadroBatalha = new string[10, 10]; // tamanho do mapa
-    int playerPoints = 0; // pontos atuais do jogador
-    int jogadas = 15; // 
-    int player; //jogador
-    int[] lastplayerPoints;  // antigos pontos do jogador
-    string[] Cruiser = new string[1];  // cruzador
-    string[] AircraftCarrier = new string[10]; // porta aviao 
-    string[] TugBoats = new string[2]; // rebocador
+    int pontos = 0; // pontos atuais do jogador
+    int jogadas = 15; //
+    string opcao;
 
-    SetCruzador(quadroBatalha);
-    SetRebocador(quadroBatalha);
-    SetPortaAviao(quadroBatalha);
+    do
+    {
+      PrencherPosicoesCampo(quadroBatalha);
 
-    Menu(quadroBatalha, jogadas);
+      SetCruzador(quadroBatalha);
+      SetRebocador(quadroBatalha);
+      SetPortaAviao(quadroBatalha);
+
+      Menu(quadroBatalha, jogadas, ref pontos);
+
+      Console.WriteLine("Deseja Jogar Novamente?");
+      Console.WriteLine("Digite 1 para continuar");
+      Console.WriteLine("Digite 2 para sair");
+      opcao = Console.ReadLine();
+    }
+    while (opcao != "2");
 
     // Console.WriteLine(int.IsPunctuation(playerPoints));
     // Console.WriteLine(int.IsPunctuation(lastplayerPoints)); //sistema de pontuacao nao concluido
 
 
   }
-
-  public string VerificaTiro(string[,] quadroBatalha, int linha, int coluna) // verifica a jogada do jogador
+  #region Verificações
+  public string VerificaTiro(string[,] quadroBatalha, int linha, int coluna, ref int pontos) // verifica a jogada do jogador
   {
-    if (quadroBatalha[linha, coluna] == " ")
+
+    if (quadroBatalha[linha, coluna] == "C")
     {
-      return VerificaPosicãoBarcoMaisPerto(quadroBatalha, linha, coluna);
-    }
-    else if (quadroBatalha[linha, coluna] == "C")
-    {
-      // Console.WriteLine("Atingiu um Porta Cruzador: {Red}", Console.BackgroundColor);
-      // Console.BackgroundColor = ConsoleColor.Red;
-      // Console.WriteLine("Atingiu um Porta Cruzador: {Red}", Console.BackgroundColor);
+      pontos += 15;
       return "c";
     }
     else if (quadroBatalha[linha, coluna] == "P")
     {
-      // Console.WriteLine("Atingiu um Porta Avião: {Red}", Console.BackgroundColor);
-      // Console.BackgroundColor = ConsoleColor.Red;
-      // Console.WriteLine("Atingiu um Porta Avião: {Red}", Console.BackgroundColor);
+      pontos += 5;
       return "p";
     }
     else if (quadroBatalha[linha, coluna] == "R")
     {
-      // Console.WriteLine("Atingiu um Porta Rebocador: {Red}", Console.BackgroundColor);
-      // Console.BackgroundColor = ConsoleColor.Red;
-      // Console.WriteLine("Atingiu um Porta Rebocador: {Red}", Console.BackgroundColor);
+      pontos += 10;
       return "r";
     }
-    else if (quadroBatalha[linha, coluna] == "r" || quadroBatalha[linha, coluna] == "p" || quadroBatalha[linha, coluna] == "c" ||
-    quadroBatalha[linha, coluna] == "1" || quadroBatalha[linha, coluna] == "2" || quadroBatalha[linha, coluna] == "3" ||
-    quadroBatalha[linha, coluna] == "M")
+    else if (quadroBatalha[linha, coluna] == " ")
     {
-      // Console.WriteLine("Não atingiu nenhuma construção: {Green}", Console.BackgroundColor);
-      // Console.BackgroundColor = ConsoleColor.Green;
-      // Console.WriteLine("Não atingiu nenhuma construção: {Green}", Console.BackgroundColor);
+      return VerificaPosicaoBarcoMaisPerto(quadroBatalha, linha, coluna);
+    }
+    else
+    {
       return "comando dado antes";
     }
 
-    return "Como????";
+    return "comando dado antes";
+
   }
 
-  public string VerificaPosicãoBarcoMaisPerto(string[,] quadroBatalha, int linha, int coluna)
+  public static string VerificaPosicaoBarcoMaisPerto(string[,] quadroBatalha, int linha, int coluna)
   {
-    string retorno;
-
-    if (linha > 2 && linha < 7 && coluna > 2 && coluna < 7)
+    for (int i = 1; i < 4; i++)
     {
-      return VerificaTresPosicoes(quadroBatalha, linha, coluna);
+      if (linha - i >= 0)
+      {
+        if (quadroBatalha[linha - i, coluna] == "C" ||
+        quadroBatalha[linha - i, coluna] == "P" ||
+        quadroBatalha[linha - i, coluna] == "R")
+          return Convert.ToString(i);
+      }
+
+      if (linha + i < 10)
+      {
+        if (quadroBatalha[linha + i, coluna] == "C" ||
+        quadroBatalha[linha + i, coluna] == "P" ||
+        quadroBatalha[linha + i, coluna] == "R")
+          return Convert.ToString(i);
+      }
+
+      if (coluna - i >= 0)
+      {
+        if (quadroBatalha[linha, coluna - i] == "C" ||
+        quadroBatalha[linha, coluna - i] == "P" ||
+        quadroBatalha[linha, coluna - i] == "R")
+          return Convert.ToString(i);
+      }
+
+      if (coluna + i < 10)
+      {
+        if (quadroBatalha[linha, coluna + i] == "C" ||
+        quadroBatalha[linha, coluna + i] == "P" ||
+        quadroBatalha[linha, coluna + i] == "R")
+          return Convert.ToString(i);
+      }
     }
-
-    if(coluna == 2 && linha> 2 && linha<7)
-    {
-
-    }
-
+    return "M";
   }
-#region 
-  public static string VerficaParaColuna2(string[,] quadroBatalha, int linha, int coluna)
-  { 
-    //Verificação para saber se está 1 quadrado em volta
-    if (quadroBatalha[linha - 1, coluna] != " " || quadroBatalha[linha + 1, coluna] != " " ||
-       quadroBatalha[linha, coluna - 1] != " " || quadroBatalha[linha, coluna + 1] != " ")
-    {
-      return "1";
-    }//Verificação para saber se está 2 quadrado em volta
-    else if (quadroBatalha[linha - 2, coluna] == " " || quadroBatalha[linha + 2, coluna] == " " ||
-            quadroBatalha[linha, coluna - 2] == " " || quadroBatalha[linha, coluna + 2] == " ")
-    {
-      return "2";
-    }//Verificação para saber se está 3 quadrado em volta
-    else if (quadroBatalha[linha + 3, coluna] == " " || quadroBatalha[linha, coluna - 3] == " " || quadroBatalha[linha, coluna + 3] == " ")
-    {
-      return "3";
-    }
-    else
-    {
-      return "M";
-      // Console.WriteLine("Errou por muito!");
-    }
-  }
+  #endregion
 
-  public static string VerificaTresPosicoes(string[,] quadroBatalha, int linha, int coluna)
-  {
-    //Verificação para saber se está 1 quadrado em volta
-    if (quadroBatalha[linha - 1, coluna] != " " || quadroBatalha[linha + 1, coluna] != " " ||
-       quadroBatalha[linha, coluna - 1] != " " || quadroBatalha[linha, coluna + 1] != " ")
-    {
-      return "1";
-    }//Verificação para saber se está 2 quadrado em volta
-    else if (quadroBatalha[linha - 2, coluna] == " " || quadroBatalha[linha + 2, coluna] == " " ||
-            quadroBatalha[linha, coluna - 2] == " " || quadroBatalha[linha, coluna + 2] == " ")
-    {
-      return "2";
-    }//Verificação para saber se está 3 quadrado em volta
-    else if (quadroBatalha[linha - 3, coluna] == " " || quadroBatalha[linha + 3, coluna] == " " ||
-            quadroBatalha[linha, coluna - 3] == " " || quadroBatalha[linha, coluna + 3] == " ")
-    {
-      return "3";
-    }
-    else
-    {
-      return "M";
-      // Console.WriteLine("Errou por muito!");
-    }
-  }
-#endregion
-  public void Menu(string[,] quadroBatalha, int jogadas)
+  #region Menu
+  public void Menu(string[,] quadroBatalha, int jogadas, ref int pontos)
   {
     //menu Do Jogo
     Console.WriteLine("Bem vindo");
@@ -142,6 +116,10 @@
     Console.WriteLine("Se você acertar um porta cruzador, você ganhará 15 pontos");
 
     Console.WriteLine("Boa sorte");
+
+    Console.WriteLine(" Digite enter para começar");
+    Console.ReadLine();
+    Console.Clear();
     do
     {
       Console.WriteLine("Escolha uma Posição para jogar (linha coluna)");
@@ -151,7 +129,23 @@
       int linha = int.Parse(Lc[0]);
       int coluna = int.Parse(Lc[1]);
 
-      string oQueAcertou = VerificaTiro(quadroBatalha, linha, coluna);
+      if (linha < 0 || linha >= 10)
+      {
+        Console.ForegroundColor =ConsoleColor.Yellow;
+        Console.WriteLine("Linha fora do Permitido");
+        Console.ResetColor();
+        continue;
+      }
+
+      if (coluna < 0 || coluna >= 10)
+      {
+        Console.ForegroundColor =ConsoleColor.Yellow;
+        Console.WriteLine("coluna fora do Permitido");
+        Console.ResetColor();
+        continue;
+      }
+
+      string oQueAcertou = VerificaTiro(quadroBatalha, linha, coluna, ref pontos);
 
       if (oQueAcertou == "comando dado antes")
       {
@@ -160,15 +154,20 @@
       }
 
       quadroBatalha[linha, coluna] = oQueAcertou;
+      
+      Console.Clear();
 
       Mapa(quadroBatalha, false);
 
       jogadas--;
     }
     while (jogadas > 0);
-
+    Mapa(quadroBatalha, true);
+    Console.WriteLine($"Você fez: {pontos}");
   }
+  #endregion
 
+  #region Preparar Campo
   public void PrencherPosicoesCampo(string[,] quadroBatalha) // linhas e colunas da batalha anval
   {
     //carrega o array com strings formatadas ("").
@@ -180,7 +179,6 @@
       }
     }
   }
-
   public int GetRandomPosition(int max) //não usar, usado somente para o GetPosicaoLivre 
   {
     var random = new Random();
@@ -226,29 +224,111 @@
       quadroBatalha[tupla.Item1, tupla.Item2] = "R";
     }
   }
-
+  #endregion
   public void Mapa(string[,] quadroBatalha, bool MostrarTudo)
   {
 
     if (!MostrarTudo)
     {
-      
+      for (int i = 0; i < quadroBatalha.GetLength(0); i++)
+      {
+        //Console.WriteLine("----------");
+        Console.Write(i + "  ");
+        for (int j = 0; j < quadroBatalha.GetLength(1); j++)
+        {
+          Console.Write("|");
+          if (quadroBatalha[i, j] == "r")
+          {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write($"{quadroBatalha[i, j]}|");
+            Console.ResetColor();
+          }
+          else if (quadroBatalha[i, j] == "c")
+          {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write($"{quadroBatalha[i, j]}|");
+            Console.ResetColor();
+          }
+          else if (quadroBatalha[i, j] == "p")
+          {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write($"{quadroBatalha[i, j]}|");
+            Console.ResetColor();
+          }
+          else if (quadroBatalha[i, j] == "1" || quadroBatalha[i, j] == "2" ||
+              quadroBatalha[i, j] == "3" || quadroBatalha[i, j] == "M")
+          {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write($"{quadroBatalha[i, j]}|");
+            Console.ResetColor();
+          }
+          else
+          {
+            Console.Write(" |");
+          }
+
+        }
+        Console.WriteLine();
+        Console.WriteLine("---------------------------------");
+      }
+      Console.WriteLine("    0  1  2  3  4  5  6  7  8  9 ");
     }
     else
     {
-        for (int i = 0; i < quadroBatalha.GetLength(0); i++)
+      for (int i = 0; i < quadroBatalha.GetLength(0); i++)
       {
         //Console.WriteLine("----------");
-        Console.Write("|");
+
         for (int j = 0; j < quadroBatalha.GetLength(1); j++)
         {
-          Console.Write($"{quadroBatalha[i, j]}|");
+          
+          if (quadroBatalha[i, j] == "r")
+          {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("|");
+            Console.Write($"{quadroBatalha[i, j]}|");
+            Console.ResetColor();
+          }
+          else if (quadroBatalha[i, j] == "c")
+          {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("|");
+            Console.Write($"{quadroBatalha[i, j]}|");
+            Console.ResetColor();
+          }
+          else if (quadroBatalha[i, j] == "p")
+          {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("|");
+            Console.Write($"{quadroBatalha[i, j]}|");
+            Console.ResetColor();
+          }
+          else if (quadroBatalha[i, j] == "1" || quadroBatalha[i, j] == "2" ||
+              quadroBatalha[i, j] == "3" || quadroBatalha[i, j] == "M")
+          {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("|");
+            Console.Write($"{quadroBatalha[i, j]}|");
+            Console.ResetColor();
+          }
+          else if (quadroBatalha[i, j] == "P" || quadroBatalha[i, j] == "C" ||
+              quadroBatalha[i, j] == "R")
+          {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("|");
+            Console.Write($"{quadroBatalha[i, j]}|");
+            Console.ResetColor();
+          }
+          else
+          {
+            Console.Write("| |");
+          }
+
         }
         Console.WriteLine();
-        Console.WriteLine("----------");
+        Console.WriteLine("---------------------------------");
       }
     }
-
   }
 
   private static void Main(string[] args)
