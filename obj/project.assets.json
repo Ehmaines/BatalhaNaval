@@ -8,19 +8,24 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\thiag\\.nuget\\packages\\": {}
+    "C:\\Users\\eduma\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\POO uniplac\\ProjetosClonados\\BatalhaNaval\\BatalhaNaval.csproj",
+      "projectUniqueName": "C:\\Users\\eduma\\OneDrive\\Documentos\\_Estudos\\Uniplac\\Semestre 2\\POO\\09-27-2022\\BatalhaNaval\\BatalhaNaval.csproj",
       "projectName": "BatalhaNaval",
-      "projectPath": "C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\POO uniplac\\ProjetosClonados\\BatalhaNaval\\BatalhaNaval.csproj",
-      "packagesPath": "C:\\Users\\thiag\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\POO uniplac\\ProjetosClonados\\BatalhaNaval\\obj\\",
+      "projectPath": "C:\\Users\\eduma\\OneDrive\\Documentos\\_Estudos\\Uniplac\\Semestre 2\\POO\\09-27-2022\\BatalhaNaval\\BatalhaNaval.csproj",
+      "packagesPath": "C:\\Users\\eduma\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\eduma\\OneDrive\\Documentos\\_Estudos\\Uniplac\\Semestre 2\\POO\\09-27-2022\\BatalhaNaval\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\thiag\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\eduma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,7 +33,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://packagesource": {}
       },
       "frameworks": {
         "net6.0": {
